@@ -1,3 +1,3 @@
-defmodule Buzzword.Bingo.HallWeb.PageViewTest do
+defmodule Buzzword.Bingo.HallWeb.GameViewTest do
   use Buzzword.Bingo.HallWeb.ConnCase, async: true
 end

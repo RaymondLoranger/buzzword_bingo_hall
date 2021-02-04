@@ -1,6 +1,8 @@
 defmodule Buzzword.Bingo.HallWeb.UserSocket do
   use Phoenix.Socket
 
+  @salt Application.get_env(:buzzword_bingo_hall, :salt)
+
   ## Channels
   # channel "room:*", Buzzword.Bingo.HallWeb.RoomChannel
 
@@ -16,9 +18,14 @@ defmodule Buzzword.Bingo.HallWeb.UserSocket do
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
   @impl true
-  def connect(_params, socket, _connect_info) do
-    {:ok, socket}
+  def connect(%{"token" => token}, socket) do
+    case Phoenix.Token.verify(socket, @salt, token, max_age: 86400) do
+      {:ok, player} -> {:ok, assign(socket, :current_player, player)}
+      {:error, _reason} -> :error
+    end
   end
+
+  def connect(_params, _socket), do: :error
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #

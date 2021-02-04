@@ -24,6 +24,11 @@ module.exports = (env, options) => {
       path: path.resolve(__dirname, '../priv/static/js'),
       publicPath: '/js/'
     },
+    resolve: {
+      alias: {
+        vue$: 'vue/dist/vue.esm.js' // 'vue/dist/vue.common.js' for webpack 1
+      }
+    },
     devtool: devMode ? 'eval-cheap-module-source-map' : undefined,
     module: {
       rules: [

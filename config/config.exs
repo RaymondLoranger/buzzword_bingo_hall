@@ -30,6 +30,9 @@ config :buzzword_bingo_hall, Buzzword.Bingo.HallWeb.Endpoint,
       |> String.to_integer()
   ]
 
+# Signing salt to sign messages between the server and the client...
+config :buzzword_bingo_hall, salt: "player auth"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

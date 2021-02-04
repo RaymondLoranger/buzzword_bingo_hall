@@ -7,9 +7,13 @@ import "../css/app.scss"
 // entry points. Those entry points can be configured
 // in "webpack.config.js".
 //
-// Import deps with the dep name or local files with a relative path, for example:
+// Import deps with the dep name or local files with a relative path, for
+// example:
 //
 //     import {Socket} from "phoenix"
 //     import socket from "./socket"
 //
 import "phoenix_html"
+import './copy-game-url'
+import './color-selector'
+import './vue-game'

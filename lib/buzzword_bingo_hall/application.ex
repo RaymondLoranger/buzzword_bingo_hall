@@ -12,9 +12,10 @@ defmodule Buzzword.Bingo.Hall.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Buzzword.Bingo.Hall.PubSub},
       # Start the Endpoint (http/https)
-      Buzzword.Bingo.HallWeb.Endpoint
+      Buzzword.Bingo.HallWeb.Endpoint,
       # Start a worker by calling: Buzzword.Bingo.Hall.Worker.start_link(arg)
       # {Buzzword.Bingo.Hall.Worker, arg}
+      Buzzword.Bingo.HallWeb.Presence
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
