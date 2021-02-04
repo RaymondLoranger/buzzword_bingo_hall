@@ -14,6 +14,7 @@ import "../css/app.scss"
 //     import socket from "./socket"
 //
 import "phoenix_html"
+import 'bootstrap' // Bootstrap support
 import './copy-game-url'
 import './color-selector'
 import './vue-game'
