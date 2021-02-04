@@ -2,4 +2,4 @@
 //
 // See https://clipboardjs.com/
 
-new Clipboard("#copy-game-url")
+new ClipboardJS("#copy-game-url")

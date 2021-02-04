@@ -1,9 +1,9 @@
 %{
-  "buzzword_bingo_engine": {:git, "https://github.com/RaymondLoranger/buzzword_bingo_engine.git", "7e222285c0bbf07dd6b6847f405fd30d079cb6fe", []},
-  "buzzword_bingo_game": {:git, "https://github.com/RaymondLoranger/buzzword_bingo_game.git", "5c12777c4b0460edef2682ffa777283316f1746d", []},
+  "buzzword_bingo_engine": {:git, "https://github.com/RaymondLoranger/buzzword_bingo_engine.git", "68084dcd6127a78466a8ec816d4ff80ebcddfd1a", []},
+  "buzzword_bingo_game": {:git, "https://github.com/RaymondLoranger/buzzword_bingo_game.git", "456e047c7d63d95c27f81ea7a31f6ab964db6af5", []},
   "buzzword_bingo_player": {:git, "https://github.com/RaymondLoranger/buzzword_bingo_player.git", "4e7660c5cf9c61d535d4b158e298556085bae1ae", []},
   "buzzword_bingo_square": {:git, "https://github.com/RaymondLoranger/buzzword_bingo_square.git", "11eab696d505944eed186f0087e58118bd1820d2", []},
-  "buzzword_bingo_summary": {:git, "https://github.com/RaymondLoranger/buzzword_bingo_summary.git", "8b9dbf23ce3c735a6dc75d305f6fa07bc1e45743", []},
+  "buzzword_bingo_summary": {:git, "https://github.com/RaymondLoranger/buzzword_bingo_summary.git", "7fba5ecce4e42a6345d40a765dc616cca3a76822", []},
   "buzzword_cache": {:git, "https://github.com/RaymondLoranger/buzzword_cache.git", "2c03b44a1655eb81f51570e2f290f9c824771b9c", []},
   "cowboy": {:hex, :cowboy, "2.8.0", "f3dc62e35797ecd9ac1b50db74611193c29815401e53bac9a5c0577bd7bc667d", [:rebar3], [{:cowlib, "~> 2.9.1", [hex: :cowlib, repo: "hexpm", optional: false]}, {:ranch, "~> 1.7.1", [hex: :ranch, repo: "hexpm", optional: false]}], "hexpm", "4643e4fba74ac96d4d152c75803de6fad0b3fa5df354c71afdd6cbeeb15fac8a"},
   "cowboy_telemetry": {:hex, :cowboy_telemetry, "0.3.1", "ebd1a1d7aff97f27c66654e78ece187abdc646992714164380d8a041eda16754", [:rebar3], [{:cowboy, "~> 2.7", [hex: :cowboy, repo: "hexpm", optional: false]}, {:telemetry, "~> 0.4", [hex: :telemetry, repo: "hexpm", optional: false]}], "hexpm", "3a6efd3366130eab84ca372cbd4a7d3c3a97bdfcfb4911233b035d117063f0af"},

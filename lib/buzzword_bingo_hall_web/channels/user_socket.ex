@@ -5,6 +5,7 @@ defmodule Buzzword.Bingo.HallWeb.UserSocket do
 
   ## Channels
   # channel "room:*", Buzzword.Bingo.HallWeb.RoomChannel
+  channel "games:*", Buzzword.Bingo.HallWeb.GameChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
