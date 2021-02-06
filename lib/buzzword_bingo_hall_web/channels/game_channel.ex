@@ -1,7 +1,7 @@
 defmodule Buzzword.Bingo.HallWeb.GameChannel do
   use Buzzword.Bingo.HallWeb, :channel
 
-  alias Buzzword.Bingo.Engine
+  alias Buzzword.Bingo.{Engine, Summary}
   alias Buzzword.Bingo.HallWeb.Presence
 
   def join("games:" <> game_name, _params, socket) do
@@ -16,7 +16,7 @@ defmodule Buzzword.Bingo.HallWeb.GameChannel do
   end
 
   def handle_info({:after_join, game_name}, socket) do
-    summary = Engine.game_summary(game_name)
+    %Summary{} = summary = Engine.game_summary(game_name)
     :ok = push(socket, "game_summary", summary)
     :ok = push(socket, "presence_state", Presence.list(socket))
 
@@ -35,7 +35,10 @@ defmodule Buzzword.Bingo.HallWeb.GameChannel do
 
     case Engine.game_pid(game_name) do
       pid when is_pid(pid) ->
-        summary = Engine.mark_square(game_name, phrase, current_player(socket))
+        %Summary{} =
+          summary =
+          Engine.mark_square(game_name, phrase, current_player(socket))
+
         broadcast!(socket, "game_summary", summary)
         {:noreply, socket}
 

@@ -35,10 +35,9 @@ body {
 
 nav ul.nav {
   margin-bottom: 1em;
-}
-
-nav ul.nav a {
-  font-size: 90%;
+  a {
+    font-size: 90%;
+  }
 }
 
 @media (min-width: 650px) {
@@ -256,7 +255,7 @@ input#game-url {
 
 #squares .square .name {
   position: absolute;
-  bottom: 5px;
+  top: 5px;
   left: 10px;
   font-size: 0.7em;
 }

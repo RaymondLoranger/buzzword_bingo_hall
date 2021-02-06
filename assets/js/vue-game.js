@@ -26,7 +26,7 @@ if (gameContainer) {
           this.channel.push('mark_square', { phrase: square.phrase })
         }
       },
-      sendChat(event) {
+      sendChat(_event) {
         if (this.chatMessage) {
           this.channel.push('new_chat_message', { body: this.chatMessage })
           this.chatMessage = ''
@@ -46,17 +46,22 @@ if (gameContainer) {
           this.players = this.toPlayers(this.presences)
         })
 
-        this.presences = {}
+        // this.presences = {}
+        this.presences = new Presence(this.channel)
 
-        this.channel.on('presence_state', state => {
-          this.presences = Presence.syncState(this.presences, state)
+        this.presences.onSync(() =>
           this.players = this.toPlayers(this.presences)
-        })
+        )
 
-        this.channel.on('presence_diff', diff => {
-          this.presences = Presence.syncDiff(this.presences, diff)
-          this.players = this.toPlayers(this.presences)
-        })
+        // this.channel.on('presence_state', state => {
+        //   this.presences = Presence.syncState(this.presences, state)
+        //   this.players = this.toPlayers(this.presences)
+        // })
+
+        // this.channel.on('presence_diff', diff => {
+        //   this.presences = Presence.syncDiff(this.presences, diff)
+        //   this.players = this.toPlayers(this.presences)
+        // })
 
         this.channel.on('new_chat_message', message => {
           this.messages.push(message)
@@ -76,8 +81,8 @@ if (gameContainer) {
           const { score, marked } = this.scores[name] || { score: 0, marked: 0 }
           return { name, color: first.color, score, marked }
         }
-
-        return Presence.list(presences, listBy)
+        // return Presence.list(presences, listBy)
+        return presences.list(listBy)
       },
       score(player) {
         return `
@@ -92,7 +97,7 @@ if (gameContainer) {
       this.joinChannel(authToken, gameName)
     },
     watch: {
-      messages(newValue, oldValue) {
+      messages(_newValue, _oldValue) {
         this.$nextTick(() => {
           // DOM is now updated
           const messageList = this.$refs.messages

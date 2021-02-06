@@ -4,7 +4,7 @@ defmodule Buzzword.Bingo.Hall.MixProject do
   def project do
     [
       app: :buzzword_bingo_hall,
-      version: "0.1.3",
+      version: "0.1.4",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -34,7 +34,6 @@ defmodule Buzzword.Bingo.Hall.MixProject do
   defp deps do
     [
       {:buzzword_bingo_engine, github: "RaymondLoranger/buzzword_bingo_engine"},
-      {:buzzword_bingo_game, github: "RaymondLoranger/buzzword_bingo_game"},
       {:dialyxir, "~> 1.0", only: :dev, runtime: false},
       {:ex_doc, "~> 0.22", only: :dev, runtime: false},
       {:file_only_logger, "~> 0.1"},

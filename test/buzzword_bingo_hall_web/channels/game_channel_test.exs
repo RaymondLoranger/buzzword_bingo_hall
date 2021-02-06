@@ -1,21 +1,18 @@
 defmodule Buzzword.Bingo.HallWeb.GameChannelTest do
   use Buzzword.Bingo.HallWeb.ChannelCase
 
-  alias Buzzword.Bingo.HallWeb.GameChannel
+  alias Buzzword.Bingo.HallWeb.{GameChannel, UserSocket}
   alias Buzzword.Bingo.{Engine, Player}
+
+  @salt Application.get_env(:buzzword_bingo_hall, :salt)
 
   setup do
     game_name = "test-game-123"
     topic = "games:#{game_name}"
-
     Engine.new_game(game_name, 3)
-
     player = Player.new("nicole", "green")
-
-    token = Phoenix.Token.sign(socket(), "player auth", player)
-
-    {:ok, socket} =
-      connect(Buzzword.Bingo.HallWeb.UserSocket, %{"token" => token})
+    token = socket(UserSocket) |> Phoenix.Token.sign(@salt, player)
+    {:ok, socket} = connect(UserSocket, %{"token" => token})
 
     [
       game_name: game_name,
@@ -27,17 +24,12 @@ defmodule Buzzword.Bingo.HallWeb.GameChannelTest do
 
   describe "join" do
     test "pushes the current game and presence state", context do
-      IO.inspect(context, label: "*** *** context *** ***")
-
       {:ok, _reply, _socket} =
         subscribe_and_join(context.socket, GameChannel, context.topic, %{})
 
       assert context.socket.assigns.current_player == context.player
-
       assert_push("presence_state", %{})
-
       summary = Engine.game_summary(context.game_name)
-
       assert_push("game_summary", ^summary)
     end
 
@@ -58,11 +50,8 @@ defmodule Buzzword.Bingo.HallWeb.GameChannelTest do
         subscribe_and_join(context.socket, GameChannel, context.topic, %{})
 
       summary = Engine.game_summary(context.game_name)
-
       square_to_mark = square_at_position(summary.squares, 0, 0)
-
       push(socket, "mark_square", %{phrase: square_to_mark.phrase})
-
       assert_broadcast("game_summary", %{})
     end
 
@@ -71,11 +60,8 @@ defmodule Buzzword.Bingo.HallWeb.GameChannelTest do
         subscribe_and_join(context.socket, GameChannel, context.topic, %{})
 
       pid = Engine.game_pid(context.game_name)
-
       Process.exit(pid, :kill)
-
       ref = push(socket, "mark_square", %{phrase: "A"})
-
       assert_reply(ref, :error, %{reason: "Game does not exist"})
     end
   end
@@ -91,14 +77,11 @@ defmodule Buzzword.Bingo.HallWeb.GameChannelTest do
       }
 
       push(socket, "new_chat_message", reply)
-
       assert_broadcast("new_chat_message", ^reply)
     end
   end
 
   defp square_at_position(squares, row, col) do
-    squares
-    |> Enum.at(row)
-    |> Enum.at(col)
+    squares |> Enum.at(row) |> Enum.at(col)
   end
 end

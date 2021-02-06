@@ -1,6 +1,8 @@
 defmodule Buzzword.Bingo.HallWeb.GameControllerTest do
   use Buzzword.Bingo.HallWeb.ConnCase
 
+  alias Buzzword.Bingo.Engine
+
   describe "new" do
     test "redirects to new session if not authenticated", %{conn: conn} do
       conn = get(conn, Routes.game_path(conn, :new))
@@ -64,10 +66,8 @@ defmodule Buzzword.Bingo.HallWeb.GameControllerTest do
   end
 
   defp start_game do
-    game_name = Buzzword.Bingo.Game.haiku_name()
-
-    {:ok, _pid} = Buzzword.Bingo.Engine.new_game(game_name, 3)
-
+    game_name = Engine.haiku_name()
+    {:ok, _pid} = Engine.new_game(game_name, 3)
     game_name
   end
 end

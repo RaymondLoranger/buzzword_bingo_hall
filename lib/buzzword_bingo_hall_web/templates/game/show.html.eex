@@ -27,11 +27,9 @@
 
           <div id="squares">
             <div class="row" v-for="rowOfSquares in squares">
-              <div class="square"
-                    v-for="square in rowOfSquares"
-                    v-bind:key="square.phrase"
-                    v-bind:style="squareStyle(square)"
-                    v-on:click="sendMark(square)">
+              <div class="square" v-for="square in rowOfSquares"
+                   :key="square.phrase" :style="squareStyle(square)"
+                   @click="sendMark(square)">
                 <span class="phrase">{{ square.phrase }}</span>
                 <span class="points">{{ square.points }}</span>
                 <span class="name" v-if="square.marked_by">
@@ -57,11 +55,10 @@
           <div class="panel-body">
             <ul id="players" class="list-group">
               <transition-group name="player-appear">
-                <li class="list-group-item"
-                    v-for="player in players"
-                    v-bind:key="player.name">
+                <li class="list-group-item" v-for="player in players"
+                    :key="player.name">
                   <span class="player-color"
-                        v-bind:style="{background: player.color}"></span>
+                        :style="{background: player.color}"></span>
                   <span class="player-name">{{ player.name }}</span>
                   <span class="player-score">{{ score(player) }}</span>
                   <span class="player-points">{{ player.score }}</span>
@@ -76,8 +73,7 @@
           <div class="panel-body">
             <ul id="messages" ref="messages" class="list-group">
               <li class="list-group-item"
-                  v-for="(message, index) in messages"
-                  v-bind:key="index">
+                  v-for="(message, index) in messages" :key="index">
                 <span class="chat-message-name">{{ message.name }}:</span>
                 <span class="chat-message-body">{{ message.body }}</span>
               </li>
@@ -85,17 +81,13 @@
           </div>
         </div>
 
-        <form id="chat-form" v-on:submit.prevent="sendChat">
+        <form id="chat-form" @submit.prevent="sendChat">
           <div class="input-group">
-            <input id="chat-input"
-                    type="text"
-                    class="form-control"
-                    v-model="chatMessage">
+            <input id="chat-input" type="text" class="form-control"
+                   v-model="chatMessage">
             <span class="input-group-btn">
-              <button id="chat-button"
-                      class="btn btn-primary"
-                      v-bind:disabled="!chatMessage"
-                      v-on:click="sendChat">
+              <button id="chat-button" class="btn btn-primary"
+                      :disabled="!chatMessage" @click="sendChat">
                 <i class="fa fa-comment"></i>
               </button>
             </span>
