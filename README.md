@@ -1,4 +1,8 @@
-# Buzzword.Bingo.Hall
+# Buzzword Bingo Hall
+
+Web interface for the _Multi-Player Bingo_ game using **_Vue.js_**.
+
+##### Based on the course [Multi-Player Bingo](https://pragmaticstudio.com/courses/unpacked-bingo) by Mike and Nicole Clark.
 
 To start your Phoenix server:
 
