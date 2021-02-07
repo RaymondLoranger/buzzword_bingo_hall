@@ -31,11 +31,8 @@ $("#color-selector .color").click(function() {
     .addClass("selected")
     .siblings()
     .removeClass("selected")
-
   const color = $(this).css("background-color")
-
   $("#player_color").val(color)
-
   $("#player_name").css("border-color", color)
 })
 */
