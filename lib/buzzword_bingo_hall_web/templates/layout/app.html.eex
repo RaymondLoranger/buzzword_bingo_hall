@@ -65,8 +65,9 @@
       <a href="http://www.phoenixframework.org/" target="_blank">Phoenix</a> +
       <a href="https://vuejs.org/" target="_blank">Vue</a>
       by
-      <a href="https://twitter.com/pragmaticstudio"
-          target="_blank">@pragmaticstudio</a>
+      <a href="https://github.com/RaymondLoranger" target="_blank">
+        Raymond Loranger
+      </a>
     </footer>
 
   </body>
