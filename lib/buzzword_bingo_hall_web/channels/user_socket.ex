@@ -18,6 +18,12 @@ defmodule Buzzword.Bingo.HallWeb.UserSocket do
   #
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
+
+  # Verify the token which should return the player, and then
+  # assign that player to the socket. This allows us to reference
+  # the player in the callback functions of the channel module.
+  #
+  # max_age: 86400 is equivalent to one day in seconds
   @impl true
   def connect(%{"token" => token}, socket) do
     case Phoenix.Token.verify(socket, @salt, token, max_age: 86400) do
