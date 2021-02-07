@@ -27,7 +27,6 @@ defmodule Buzzword.Bingo.HallWeb.SessionController do
     # The 'return_to' path retrieved by 'get_session' will be nil if going
     # to '/sessions/new' directly instead of the usual '/' or '/games/new'.
     path = get_session(conn, :return_to) || Routes.game_path(conn, :new)
-    get_session(conn, :return_to) |> IO.inspect(label: :return_to)
 
     conn
     |> delete_session(:return_to)
