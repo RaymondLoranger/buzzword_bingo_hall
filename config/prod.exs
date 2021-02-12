@@ -55,4 +55,4 @@ config :logger, level: :info
 import_config "prod.secret.exs"
 
 # config :file_only_logger, log?: true
-config :log_reset, levels: :none
+# config :log_reset, levels: :all
