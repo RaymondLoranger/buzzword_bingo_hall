@@ -4,7 +4,7 @@ defmodule Buzzword.Bingo.Hall.MixProject do
   def project do
     [
       app: :buzzword_bingo_hall,
-      version: "0.1.13",
+      version: "0.1.14",
       elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
