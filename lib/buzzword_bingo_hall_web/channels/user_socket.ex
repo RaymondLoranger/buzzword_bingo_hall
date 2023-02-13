@@ -1,7 +1,8 @@
 defmodule Buzzword.Bingo.HallWeb.UserSocket do
   use Phoenix.Socket
 
-  @salt Application.get_env(:buzzword_bingo_hall, :salt)
+  @salt :application.get_env(:buzzword_bingo_hall, :salt)
+  @salt elem(@salt, 1)
 
   ## Channels
   # channel "room:*", Buzzword.Bingo.HallWeb.RoomChannel

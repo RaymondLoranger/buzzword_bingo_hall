@@ -4,7 +4,7 @@ defmodule Buzzword.Bingo.HallWeb.SessionController do
   alias Buzzword.Bingo.Player
 
   def new(conn, _) do
-    render conn, "new.html"
+    render(conn, "new.html")
   end
 
   def create(conn, %{"player" => %{"name" => name, "color" => color}}) do

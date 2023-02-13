@@ -3,7 +3,8 @@ defmodule Buzzword.Bingo.HallWeb.GameController do
 
   alias Buzzword.Bingo.Engine
 
-  @salt Application.get_env(:buzzword_bingo_hall, :salt)
+  @salt :application.get_env(:buzzword_bingo_hall, :salt)
+  @salt elem(@salt, 1)
 
   plug :require_player
 

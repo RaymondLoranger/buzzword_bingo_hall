@@ -4,7 +4,8 @@ defmodule Buzzword.Bingo.HallWeb.GameChannelTest do
   alias Buzzword.Bingo.HallWeb.{GameChannel, UserSocket}
   alias Buzzword.Bingo.{Engine, Player}
 
-  @salt Application.get_env(:buzzword_bingo_hall, :salt)
+  @salt :application.get_env(:buzzword_bingo_hall, :salt)
+  @salt elem(@salt, 1)
 
   setup do
     game_name = "test-game-123"
